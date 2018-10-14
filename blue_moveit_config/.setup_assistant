@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: Philipp Wu
     author_email: phil80301@berkeley.edu
-    generated_timestamp: 1539490527
+    generated_timestamp: 1539492228
