@@ -1,7 +1,7 @@
 moveit_setup_assistant_config:
   URDF:
     package: blue_descriptions
-    relative_path: robots/blue_full.urdf.xacro
+    relative_path: robots/blue_full_v2.urdf.xacro
     xacro_args: "--inorder "
   SRDF:
     relative_path: config/blue_full.srdf
