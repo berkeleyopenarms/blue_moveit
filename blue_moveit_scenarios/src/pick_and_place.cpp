@@ -152,7 +152,7 @@ int main(int argc, char **argv)
     object_ids.push_back("pickup_box");
     object_ids.push_back("pickup_cylinder");
 
-    // planning_scene_interface.removeCollisionObjects(object_ids);
+    planning_scene_interface.removeCollisionObjects(object_ids);
 
     actuateGripper(left_gripper_client, CLOSE_POS, MAX_EFFORT);
 
