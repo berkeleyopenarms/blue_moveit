@@ -1,5 +1,5 @@
 controller_list:
-  - name: left_arm/blue_controllers/joint_torque_controller
+  - name: left_arm/blue_controllers/joint_trajectory_controller
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     allow_partial_joints_goal: true
@@ -39,7 +39,7 @@ controller_list:
         trajectory: 0.05
         goal: 0.02
 
-  - name: right_arm/blue_controllers/joint_torque_controller
+  - name: right_arm/blue_controllers/joint_trajectory_controller
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
     allow_partial_joints_goal: true

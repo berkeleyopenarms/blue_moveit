@@ -57,8 +57,8 @@ int main(int argc, char **argv)
     ROS_INFO("Gripper action clients ready!");
 
     // Init Arm action clients
-    actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction> right_arm_client("right_arm/blue_controllers/joint_torque_controller/follow_joint_trajectory", true);
-    actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction> left_arm_client("left_arm/blue_controllers/joint_torque_controller/follow_joint_trajectory", true);
+    actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction> right_arm_client("right_arm/blue_controllers/joint_trajectory_controller/follow_joint_trajectory", true);
+    actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction> left_arm_client("left_arm/blue_controllers/joint_trajectory_controller/follow_joint_trajectory", true);
 
     left_arm_client.waitForServer();
     right_arm_client.waitForServer();
