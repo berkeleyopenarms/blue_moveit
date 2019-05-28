@@ -2,6 +2,7 @@
   <!-- Set the param that trajectory_execution_manager needs to find the controller plugin -->
   <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
   <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
+
   <!-- load controller_list -->
-  <rosparam file="$(find blue_moveit_config)/config/blue_moveit_controllers.yaml"/>
+  <rosparam file="$(find blue_moveit_config)/config/blue_full_moveit_controllers.yaml"/>
  </launch>
