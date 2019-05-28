@@ -1,4 +1,11 @@
 #include "moveit_arm_utils.h"
+#include <csignal>
+
+void signal_handler( int signal_num ) {
+   // Terminate program
+   ros::shutdown();
+   exit(signal_num);
+}
 
 // Gripper params
 const double CLOSE_POS(0.61);
@@ -12,7 +19,7 @@ const double BASE_LINK_HEIGHT(0.965);
 ros::Duration GOAL_TIME_TOLERANCE(15.0);
 const double GOAL_TOLERANCE(0.025);
 const double PRE_GRASP_APPROACH_DISTANCE(0.10);
-const double PRE_GRASP_DISTANCE(0.04);
+const double PRE_GRASP_DISTANCE(0.06);
 const double POST_GRASP_RETREAT_DISTANCE(0.10);
 
 int main(int argc, char **argv)
@@ -23,6 +30,9 @@ int main(int argc, char **argv)
     // Init ROS
     ros::init(argc, argv, "pick_and_place_commander");
     ros::NodeHandle nh;
+
+    // Bind signal handler
+    std::signal(SIGINT, signal_handler);
 
     // Start async spinner to facilitate joint-state publishing
     ros::AsyncSpinner spinner(1);
