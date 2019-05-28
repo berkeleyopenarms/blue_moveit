@@ -1,4 +1,5 @@
 <launch>
+  <arg name="blue_side" default="blue_full" />
 
   <include file="$(find blue_moveit_config)/launch/planning_context.launch" />
 
@@ -28,13 +29,13 @@
   <!-- Trajectory Execution Functionality -->
   <include ns="move_group" file="$(find blue_moveit_config)/launch/trajectory_execution.launch.xml" if="$(arg allow_trajectory_execution)">
     <arg name="moveit_manage_controllers" value="true" />
-    <arg name="moveit_controller_manager" value="blue_full" unless="$(arg fake_execution)"/>
+    <arg name="moveit_controller_manager" value="$(arg blue_side)" unless="$(arg fake_execution)"/>
     <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
   </include>
 
   <!-- Sensors Functionality -->
   <include ns="move_group" file="$(find blue_moveit_config)/launch/sensor_manager.launch.xml" if="$(arg allow_trajectory_execution)">
-    <arg name="moveit_sensor_manager" value="blue_full" />
+    <arg name="moveit_sensor_manager" value="$(arg blue_side)" />
   </include>
 
   <!-- Start the actual move_group node/action server -->
