@@ -1,7 +1,10 @@
 <launch>
   <arg name="blue_side" default="blue_full" />
+  <arg name="version" default="2" doc="1 or 2" />
 
-  <include file="$(find blue_moveit_config)/launch/planning_context.launch" />
+  <include file="$(find blue_moveit_config)/launch/planning_context.launch">
+    <arg name="version" value="$(arg version)" />
+  </include>
 
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />

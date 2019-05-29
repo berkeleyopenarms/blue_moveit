@@ -7,6 +7,7 @@
     <!-- Load MoveIt! Stack -->
     <include file="$(find blue_moveit_config)/launch/planning_context.launch">
         <arg name="load_robot_description" value="false"/>
+        <arg name="version" value="$(arg version)" />
     </include>
 
     <include file="$(find blue_moveit_config)/launch/move_group.launch" />
