@@ -1,0 +1,47 @@
+controller_list:
+  - name: right_arm/blue_controllers/joint_trajectory_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    allow_partial_joints_goal: true
+    default: true
+    joints:
+      - right_base_roll_joint
+      - right_shoulder_lift_joint
+      - right_shoulder_roll_joint
+      - right_elbow_lift_joint
+      - right_elbow_roll_joint
+      - right_wrist_lift_joint
+      - right_wrist_roll_joint
+    constraints:
+      goal_time: 0.5
+      right_base_roll_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_shoulder_lift_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_shoulder_roll_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_elbow_lift_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_elbow_roll_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_wrist_lift_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_wrist_roll_joint:
+        trajectory: 0.05
+        goal: 0.02
+      right_gripper_joint:
+        trajectory: 0.05
+        goal: 0.02
+
+  - name: right_arm/blue_controllers/gripper_controller
+    action_ns: gripper_cmd
+    type: GripperCommand
+    default: true
+    joints:
+      - right_gripper_joint
