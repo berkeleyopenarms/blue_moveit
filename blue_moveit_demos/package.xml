@@ -1,6 +1,6 @@
 <package>
 
-  <name>blue_moveit_scenarios</name>
+  <name>blue_moveit_demos</name>
   <version>0.3.0</version>
   <description>
      Berkeley Blue Arm MoveIt Demo Scenarios

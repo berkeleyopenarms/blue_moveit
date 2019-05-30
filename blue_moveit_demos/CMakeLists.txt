@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(blue_moveit_scenarios)
+project(blue_moveit_demos)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++14)
