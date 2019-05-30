@@ -1,0 +1,15 @@
+<package format="2">
+  <name>blue_moveit_bringup</name>
+  <version>0.0.0</version>
+  <description>Bringup scripts and launch files for Blue</description>
+
+  <maintainer email="methyldragon@gmail.com">methylDragon</maintainer>
+
+  <license>MIT</license>
+
+  <author email="methyldragon@gmail.com">methylDragon</author>
+  <author email="brentyi@berkeley.edu">Brent Yi</author>
+  <author email="phil80301@berkeley.edu">Philipp Wu</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
