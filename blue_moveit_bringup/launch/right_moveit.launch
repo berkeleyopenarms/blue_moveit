@@ -14,6 +14,17 @@
     <arg name="configuration" value="right" />
     <arg name="version" value="$(arg version)" />
   </include>
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="right_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
   <include file="$(find blue_moveit_config)/launch/move_group.launch">
