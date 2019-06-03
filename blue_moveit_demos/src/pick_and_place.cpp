@@ -80,7 +80,7 @@ int main(int argc, char **argv)
     ////////////////////////////////////////////////////////////////////////////
 
     // // Populate environment with box
-    // shape_msgs::SolidPrimitive pickup_box_shape = create_box_shape(0.07, 0.07, 0.2);
+    // shape_msgs::SolidPrimitive pickup_BoxShape = createBoxShape(0.07, 0.07, 0.2);
     //
     // // Note: The pose is located at the CENTER of the primitive. So adjust accordingly
     // // For URDFs, Pose is generally located at the BOTTOM of the model.
@@ -94,11 +94,11 @@ int main(int argc, char **argv)
     // box_pose.position.y = 0.4;
     // box_pose.position.z = 0.8 - BASE_LINK_HEIGHT + 0.2 / 2; // Box falls to table height at 0.8.
     //
-    // add_primitive_collision(pickup_box_shape, box_pose, l_move_group.getPlanningFrame(),
+    // addPrimitiveCollision(pickup_BoxShape, box_pose, l_move_group.getPlanningFrame(),
     //                         "pickup_box", collision_objects);
 
     // Populate environment with cylinder
-    shape_msgs::SolidPrimitive pickup_cylinder_shape = create_cylinder_shape(0.025, 0.2);
+    shape_msgs::SolidPrimitive pickup_cylinder_shape = createCylinderShape(0.025, 0.2);
 
     geometry_msgs::Pose cylinder_pose;
     cylinder_pose.orientation.w = 1.0;
@@ -106,11 +106,11 @@ int main(int argc, char **argv)
     cylinder_pose.position.y = 0.4;
     cylinder_pose.position.z = 0.8 - BASE_LINK_HEIGHT + 0.2 / 2; // Box falls to table height at 0.8.
 
-    add_primitive_collision(pickup_cylinder_shape, cylinder_pose, l_move_group.getPlanningFrame(),
+    addPrimitiveCollision(pickup_cylinder_shape, cylinder_pose, l_move_group.getPlanningFrame(),
                             "pickup_cylinder", collision_objects);
 
     // Populate environment with table
-    shape_msgs::SolidPrimitive table_shape = create_box_shape(1.0, 2.0, 0.075);
+    shape_msgs::SolidPrimitive table_shape = createBoxShape(1.0, 2.0, 0.075);
 
     geometry_msgs::Pose table_pose;
     table_pose.orientation.w = 1.0;
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
     table_pose.position.y = 0;
     table_pose.position.z = 0.8 - BASE_LINK_HEIGHT - 0.075 / 2;
 
-    add_primitive_collision(table_shape, table_pose, l_move_group.getPlanningFrame(),
+    addPrimitiveCollision(table_shape, table_pose, l_move_group.getPlanningFrame(),
                             "table", collision_objects);
 
     // Populate planning interface
