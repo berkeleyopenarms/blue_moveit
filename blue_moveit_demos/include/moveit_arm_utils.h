@@ -28,11 +28,13 @@ void moveArm(actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAc
              geometry_msgs::Pose pose,
              const ros::Duration& goal_time_tolerance);
 
-void add_primitive_collision(const shape_msgs::SolidPrimitive& _shape_msg, const geometry_msgs::Pose& _pose,
+void addPrimitiveCollision(const shape_msgs::SolidPrimitive& _shape_msg, const geometry_msgs::Pose& _pose,
                              const std::string& _frame_name, const std::string& _id,
                              std::vector<moveit_msgs::CollisionObject>& _collision_objects);
 
-shape_msgs::SolidPrimitive create_box_shape(const double& _x, const double& _y, const double& _z);
-shape_msgs::SolidPrimitive create_cylinder_shape(const double& _r, const double& _h);
+shape_msgs::SolidPrimitive createBoxShape(const double& _x, const double& _y, const double& _z);
+shape_msgs::SolidPrimitive createCylinderShape(const double& _r, const double& _h);
 
+geometry_msgs::Pose createPoseMsg(const double& ori_w, const double& ori_x, const double& ori_y, const double& ori_z,
+                                    const double& pos_x, const double& pos_y, const double& pos_z);
 #endif

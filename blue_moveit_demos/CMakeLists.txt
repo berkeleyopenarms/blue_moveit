@@ -49,8 +49,13 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(pick_and_place src/pick_and_place.cpp)
 add_library(moveit_arm_utils include/moveit_arm_utils.cpp)
+
+add_executable(pick_and_place src/pick_and_place.cpp)
 target_link_libraries(pick_and_place moveit_arm_utils ${catkin_LIBRARIES})
 
+add_executable(right_table_pick_and_place src/right_table_pick_and_place.cpp)
+target_link_libraries(right_table_pick_and_place moveit_arm_utils ${catkin_LIBRARIES})
+
 add_dependencies(pick_and_place moveit_arm_utils ${blue_moveit_gazebo_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(right_table_pick_and_place moveit_arm_utils ${blue_moveit_gazebo_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

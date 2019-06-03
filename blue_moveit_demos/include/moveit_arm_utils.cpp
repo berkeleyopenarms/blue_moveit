@@ -11,7 +11,7 @@ void actuateGripper(actionlib::SimpleActionClient<control_msgs::GripperCommandAc
     ac.sendGoal(goal);
     ROS_INFO("Sent Gripper Command: Position %f | Max Effort %f", position, max_effort);
 
-    bool finished_before_timeout = ac.waitForResult(ros::Duration(30.0));
+    bool finished_before_timeout = ac.waitForResult(ros::Duration(3.0));
 
     if (finished_before_timeout)
     {
@@ -41,7 +41,7 @@ void moveArm(actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAc
     ac.sendGoal(goal);
     ROS_INFO("Sent arm Command");
 
-    bool finished_before_timeout = ac.waitForResult(ros::Duration(30.0));
+    bool finished_before_timeout = ac.waitForResult(ros::Duration(10));
 
     if (finished_before_timeout)
     {
@@ -52,7 +52,7 @@ void moveArm(actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAc
       ROS_INFO("Action did not finish before the time out.");
 }
 
-void add_primitive_collision(const shape_msgs::SolidPrimitive& _shape_msg, const geometry_msgs::Pose& _pose,
+void addPrimitiveCollision(const shape_msgs::SolidPrimitive& _shape_msg, const geometry_msgs::Pose& _pose,
                              const std::string& _frame_name, const std::string& _id,
                              std::vector<moveit_msgs::CollisionObject>& _collision_objects)
 {
@@ -67,7 +67,7 @@ void add_primitive_collision(const shape_msgs::SolidPrimitive& _shape_msg, const
     _collision_objects.push_back(collision_object);
 }
 
-shape_msgs::SolidPrimitive create_box_shape(const double& _x, const double& _y, const double& _z)
+shape_msgs::SolidPrimitive createBoxShape(const double& _x, const double& _y, const double& _z)
 {
   shape_msgs::SolidPrimitive msg;
   msg.type = msg.BOX;
@@ -78,7 +78,7 @@ shape_msgs::SolidPrimitive create_box_shape(const double& _x, const double& _y, 
   return msg;
 }
 
-shape_msgs::SolidPrimitive create_cylinder_shape(const double& _r, const double& _h)
+shape_msgs::SolidPrimitive createCylinderShape(const double& _r, const double& _h)
 {
   shape_msgs::SolidPrimitive msg;
   msg.type = msg.CYLINDER;
@@ -86,4 +86,21 @@ shape_msgs::SolidPrimitive create_cylinder_shape(const double& _r, const double&
   msg.dimensions[msg.CYLINDER_RADIUS] = _r;
   msg.dimensions[msg.CYLINDER_HEIGHT] = _h;
   return msg;
+}
+
+geometry_msgs::Pose createPoseMsg(const double& ori_w, const double& ori_x, const double& ori_y, const double& ori_z,
+                                    const double& pos_x, const double& pos_y, const double& pos_z)
+{
+    geometry_msgs::Pose msg;
+
+    msg.orientation.w = ori_w;
+    msg.orientation.x = ori_x;
+    msg.orientation.y = ori_y;
+    msg.orientation.z = ori_z;
+
+    msg.position.x = pos_x;
+    msg.position.y = pos_y;
+    msg.position.z = pos_z;
+
+    return msg;
 }
