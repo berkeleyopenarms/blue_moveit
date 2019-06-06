@@ -42,6 +42,18 @@ $ roslaunch blue_moveit_bringup left_moveit.launch param_file:=blue_params.yaml
 $ roslaunch blue_moveit_bringup full_moveit.launch param_file:=blue_params.yaml
 ```
 
+### Running Simulated Two-Arm Pick and Place
+Note running this demo requires the blue_simulator package.
+
+This is really easy because it's simulated. After starting the gazebo_demo, you should be able to add a MoveIt! GUI plugin interface for the RViz window that should open up to manually control the arm.
+
+```shell
+# Terminal 1
+$ roslaunch blue_moveit_bringup gazebo_demo.launch
+
+# Terminal 2
+$ roslaunch blue_moveit_demos pick_and_place
+```
 
 ### Running Right Arm Pick and Place Demo
 
