@@ -1,4 +1,4 @@
-#include "moveit_arm_utils.h"
+#include "demo_moveit_arm_utils.h"
 
 void actuateGripper(actionlib::SimpleActionClient<control_msgs::GripperCommandAction>& ac, double position, double max_effort)
 {
