@@ -13,7 +13,8 @@ const double OPEN_POS(0.1);
 const double MAX_EFFORT(10.2);
 
 // Workspace constraints
-const double BASE_LINK_HEIGHT(0.965);
+// const double BASE_LINK_HEIGHT(0.965);
+const double BASE_LINK_HEIGHT(0.);
 
 // Movement params
 ros::Duration GOAL_TIME_TOLERANCE(15.0);

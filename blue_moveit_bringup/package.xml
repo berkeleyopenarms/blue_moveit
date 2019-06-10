@@ -1,0 +1,29 @@
+<package>
+
+  <name>blue_moveit_bringup</name>
+  <version>0.3.0</version>
+  <description>
+    MoveIt! launch files.
+  </description>
+  <author email="phil80301@berkeley.edu">Philipp Wu</author>
+  <maintainer email="phil80301@berkeley.edu">Philipp Wu</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>moveit_ros_move_group</run_depend>
+  <run_depend>moveit_fake_controller_manager</run_depend>
+  <run_depend>moveit_kinematics</run_depend>
+  <run_depend>moveit_planners_ompl</run_depend>
+  <run_depend>moveit_ros_visualization</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>xacro</run_depend>
+  <!-- This package is referenced in the warehouse launch files, but does not build out of the box at the moment. Commented the dependency until this works. -->
+  <!-- <run_depend>warehouse_ros_mongo</run_depend> -->
+  <build_depend>blue_descriptions</build_depend>
+  <run_depend>blue_descriptions</run_depend>
+
+
+</package>
