@@ -1,4 +1,4 @@
-#include "moveit_arm_utils.h"
+#include "demo_moveit_arm_utils.h"
 #include <csignal>
 
 void signal_handler( int signal_num ) {

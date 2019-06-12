@@ -1,5 +1,5 @@
-#ifndef MOVEIT_ARM_UTILS
-#define MOVEIT_ARM_UTILS
+#ifndef DEMO_MOVEIT_ARM_UTILS
+#define DEMO_MOVEIT_ARM_UTILS
 
 // ROS
 #include <ros/ros.h>
