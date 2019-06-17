@@ -29,8 +29,6 @@ Note that the MoveIt bringup starts the controllers immediately. The arm will no
 
 You are advised to use one of the [helper scripts](https://github.com/berkeleyopenarms/blue_helpers) to move the arm to a position that MoveIt doesn't consider to be self-colliding. Example: `$ rosrun blue_helpers right_pickup_ready_pose_commander`
 
-**Warning:** Do not run the bringup if you've just turned on the power to the arm, as this might cause the arm to violently snap to a fully zeroed position. **Wait at least 5 seconds.**
-
 ```shell
 # Right Arm Setup
 $ roslaunch blue_moveit_bringup right_moveit.launch param_file:=blue_params.yaml
@@ -52,7 +50,7 @@ This is really easy because it's simulated. After starting the gazebo_demo, you 
 $ roslaunch blue_moveit_bringup gazebo_demo.launch
 
 # Terminal 2
-$ roslaunch blue_moveit_demos pick_and_place
+$ rosrun blue_moveit_demos pick_and_place
 ```
 
 ### Running Right Arm Pick and Place Demo
