@@ -1,7 +1,7 @@
 <launch>
   <arg name="version" default="2" doc="1 or 2"/>
   <!-- By default, we are not in debug mode -->
-  <arg name="debug" default="false" />
+  <arg name="debug" default="false" doc="enables MoveIt debug logs"/>
 
   <node
     name="$(anon blue_controller_spawner)"
@@ -23,12 +23,6 @@
     <arg name="debug" value="$(arg debug)"/>
     <arg name="blue_side" value="blue_left" />
     <arg name="version" value="$(arg version)" />
-  </include>
-
-  <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <include file="$(find blue_moveit_config)/launch/moveit_rviz.launch">
-    <arg name="config" value="true"/>
-    <arg name="debug" value="$(arg debug)"/>
   </include>
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
