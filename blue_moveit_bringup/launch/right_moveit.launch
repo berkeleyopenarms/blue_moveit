@@ -32,7 +32,7 @@
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find blue_moveit_config)/launch/planning_context.launch">
-    <arg name="load_robot_description" value="true"/>
+    <arg name="load_robot_description" value="false"/>
     <arg name="blue_side" value="blue_right" />
     <arg name="version" value="$(arg version)" />
   </include>
