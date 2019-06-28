@@ -2,7 +2,7 @@
     <arg name="version" default="2" doc="1 or 2" />
 
     <!-- Init Blue Simulator -->
-    <include file="$(find blue_gazebo)/launch/blue_pickup_world.launch"/>
+    <include file="$(find blue_gazebo)/launch/full_pickup.launch"/>
 
     <!-- Load MoveIt! Stack -->
     <include file="$(find blue_moveit_config)/launch/planning_context.launch">
