@@ -31,13 +31,13 @@ You are advised to use one of the [helper scripts](https://github.com/berkeleyop
 
 ```shell
 # Right Arm Setup
-$ roslaunch blue_moveit_bringup right_moveit.launch param_file:=blue_params.yaml
+$ roslaunch blue_moveit_bringup right_moveit.launch
 
 # Left Arm Setup
-$ roslaunch blue_moveit_bringup left_moveit.launch param_file:=blue_params.yaml
+$ roslaunch blue_moveit_bringup left_moveit.launch
 
 # Full Setup
-$ roslaunch blue_moveit_bringup full_moveit.launch param_file:=blue_params.yaml
+$ roslaunch blue_moveit_bringup full_moveit.launch
 ```
 
 ### Running Simulated Two-Arm Pick and Place
@@ -47,7 +47,8 @@ This is really easy because it's simulated. After starting the gazebo_demo, you 
 
 ```shell
 # Terminal 1
-$ roslaunch blue_moveit_bringup gazebo_demo.launch
+$ roslaunch blue_gazebo full_pickup.launch # launch simulated robot gazebo
+$ roslaunch blue_moveit_bringup full_moveit.launch # launch moveit
 
 # Terminal 2
 $ rosrun blue_moveit_demos pick_and_place
@@ -61,7 +62,8 @@ If the demo fails, the robot might be detecting that it is self-colliding. Use t
 
 ```shell
 # Terminal 1
-$ roslaunch blue_moveit_bringup right_moveit.launch param_file:=blue_params.yaml
+$ roslaunch blue_bringup right.launch param_file:=blue_params.yaml
+$ roslaunch blue_moveit_bringup right_moveit.launch
 
 # Terminal 2
 $ rosrun blue_helpers right_pickup_ready_pose_commander
