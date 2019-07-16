@@ -1,0 +1,45 @@
+<launch>
+  <arg name="version" default="2" doc="1 or 2"/>
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" doc="enables MoveIt debug logs"/>
+
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="left_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
+  <node
+    name="$(anon blue_controller_spawner)"
+    pkg="blue_controller_manager"
+    type="spawner.py"
+    output="screen"
+    ns="right_arm">
+    <rosparam param="start_controllers">
+      - blue_controllers/joint_trajectory_controller
+      - blue_controllers/gripper_controller
+    </rosparam>
+  </node>
+
+  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find blue_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="false"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+    <arg name="blue_side" value="blue_full" />
+    <arg name="version" value="$(arg version)" />
+  </include>
+
+  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+  <include file="$(find blue_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="false"/>
+    <arg name="blue_side" value="blue_full" />
+    <arg name="version" value="$(arg version)" />
+  </include>
+</launch>
