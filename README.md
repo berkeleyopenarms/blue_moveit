@@ -8,67 +8,35 @@ $ roslaunch blue_moveit_bringup rviz_demo.launch
 ```
 This does not require a physical arm.
 
+
 ### Gazebo MoveIt Demo
 
-Use `gazebo_demo.launch` to bring up the two-arm MoveIt stack in the Gazebo simulator:
-```shell
-$ roslaunch blue_moveit_bringup gazebo_demo.launch
+First, launch the Gazebo bringup (`full.launch` corresponds to the bringup for the full, two-arm setup; `right.launch` and `left.launch` should work as well):
+```bash
+roslaunch blue_gazebo full.launch
 ```
 
-This particular launch file starts a Gazebo world loaded with a table and an example pick-and-place object.
+Then, launch the MoveIt stack:
+```bash
+roslaunch blue_moveit_bringup full.launch
+```
 
-Note that pick and place will crash Gazebo if the gripper actuators touch the pick-and-place object, due to how mimic joints are implemented. All other arm functionalities should work.
+Finally, run rviz:
+```bash
+roslaunch blue_bringup rviz.launch
+```
+
 
 ### Physical Arm with MoveIt
 
-Use this to bring up the physical Blue arm with the basic Blue controllers and MoveIt integration!
+Launching MoveIt for the physical arm is identical to doing so with Gazebo -- just replace the Gazebo launch command with the corresponding one from [blue_bringup](https://github.com/berkeleyopenarms/blue_core/).
 
 Ensure your arm is powered on and the USB dongle is connected.
 
 Note that the MoveIt bringup starts the controllers immediately. The arm will not be in gravity compensation mode and will actively try to maintain its starting position.
 
-You are advised to use one of the [helper scripts](https://github.com/berkeleyopenarms/blue_helpers) to move the arm to a position that MoveIt doesn't consider to be self-colliding. Example: `$ rosrun blue_helpers right_pickup_ready_pose_commander`
+If needed, you can use one of these [helper scripts](https://github.com/berkeleyopenarms/blue_helpers) to move the arm to a position that MoveIt doesn't consider to be self-colliding. Example: `$ rosrun blue_helpers right_pickup_ready_pose_commander`
 
-```shell
-# Right Arm Setup
-$ roslaunch blue_moveit_bringup right_moveit.launch
-
-# Left Arm Setup
-$ roslaunch blue_moveit_bringup left_moveit.launch
-
-# Full Setup
-$ roslaunch blue_moveit_bringup full_moveit.launch
-```
-
-### Running Simulated Two-Arm Pick and Place
-Note running this demo requires the `blue_simulator` package.
-
-This is really easy because it's simulated. After starting the gazebo_demo, you should be able to add a MoveIt GUI plugin interface for the RViz window that should open up to manually control the arm.
-
-```shell
-# Terminal 1
-$ roslaunch blue_gazebo full_pickup.launch # launch simulated robot gazebo
-$ roslaunch blue_moveit_bringup full_moveit.launch # launch moveit
-
-# Terminal 2
-$ rosrun blue_moveit_demos pick_and_place
-```
-
-### Running Right Arm Pick and Place Demo
-
-Note that this particular demo does not use the table arrangement as specified in the quickstart. Instead, the arm will operate at an area opposite its starting position.
-
-If the demo fails, the robot might be detecting that it is self-colliding. Use the manual control or `rqt_joint_trajectory_controller` to move it to a more favourable position.
-
-```shell
-# Terminal 1
-$ roslaunch blue_bringup right.launch param_file:=blue_params.yaml
-$ roslaunch blue_moveit_bringup right_moveit.launch
-
-# Terminal 2
-$ rosrun blue_helpers right_pickup_ready_pose_commander
-$ rosrun blue_moveit_demos right_table_pick_and_place
-```
 
 ## Adjusting Controller Gains
 
@@ -117,7 +85,6 @@ The message then goes into the controller manager and out to the controller that
 ![ros_control stack](http://wiki.ros.org/ros_control?action=AttachFile&do=get&target=gazebo_ros_control.png)
 
 Image source: <http://wiki.ros.org/ros_control>
-
 
 
 ## Visualising the Launch File Call Tree
