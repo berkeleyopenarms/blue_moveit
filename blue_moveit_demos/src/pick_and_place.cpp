@@ -8,9 +8,9 @@ void signal_handler( int signal_num ) {
 }
 
 // Gripper params
-const double CLOSE_POS(0.61);
+const double CLOSE_POS(0.54);
 const double OPEN_POS(0.1);
-const double MAX_EFFORT(10.2);
+const double MAX_EFFORT(10.5);
 
 // Workspace constraints
 const double BASE_LINK_HEIGHT(0.965);
@@ -125,7 +125,7 @@ int main(int argc, char **argv)
     planning_scene_interface.addCollisionObjects(collision_objects);
 
     ROS_INFO("Waiting for arm to stabilise...");
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
 
     // Open grippers
     ROS_INFO("Opening grippers");
